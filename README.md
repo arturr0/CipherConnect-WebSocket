@@ -2,7 +2,7 @@
 
 A real-time chat application using **WebSockets**, **JWT authentication**, **SQLite** for message and credential storage, and **bcrypt** for encryption. Users can upload avatars to personalize their profiles.
 
-## [https://cipherconnect.onrender.com](https://cipherconnect.onrender.com)
+## <a href="https://cipherconnect.onrender.com" target="_blank">https://cipherconnect.onrender.com</a>
 
 ## Features
 
