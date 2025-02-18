@@ -208,7 +208,7 @@
 		margin-top: 0;
 		display: none;
 	}
-	.user .profile-container {
+	.user {
 		margin-left: 0;
 	}
 }
@@ -277,6 +277,7 @@ button {
 	justify-content: center; /* Center horizontally */
 	margin-top: 10px;
 	position: relative;
+	margin-left: 10px;
 }
 
 .profile-container {
@@ -286,7 +287,12 @@ button {
 	justify-content: center; 
 	width: 40px; 
 	height: 40px; 
-	margin-left: 10px;
+	/* margin: 0 auto; */
+}
+.profile-container img {
+	object-fit: cover;
+	width: 40px;
+	height: 40px;
 }
 .loading-placeholder, .initials, .profile-image {
 	position: relative; /* Allow overlap without layout shift */
@@ -297,7 +303,7 @@ button {
 	border-radius: 50%; /* Make it a circle */
 }
 .initials {
-	display: flex; /* Flexbox for centering text */
+	display: none; /* Flexbox for centering text */
 	align-items: center; /* Center vertically */
 	justify-content: center; /* Center horizontally */
 	width: 40px; 
@@ -320,11 +326,9 @@ button {
 }
 .user-info {
 	display: flex;
-	flex-direction: column; 
-	
-	margin-left: 10px;
+	flex-direction: column;
+	padding-left: 10px;
 }
-
 .buttons {
 	display: flex;
 	gap: 5px; 
@@ -687,9 +691,11 @@ h1 a {
 	display: flex;
 	
 }
-#receiverAvatar {
+#receiverImg {
 	width: 40px;
-	height: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 #receiverAvatar {
 	width: 40px;
@@ -698,12 +704,13 @@ h1 a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-right: 5px;
 }
 #receiverInitials {
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-	display: flex;
+	display: none;
 	justify-content: center;
 	align-items: center;
 	background: rgb(63,94,251);
@@ -1048,8 +1055,7 @@ h1 a {
 
 #friendsAndGroups {
 	height: 96%;
-	
-	
+	margin-left: 10px;
 }
 #friendsAndGroups:hover {
 	
@@ -1210,7 +1216,7 @@ input[type="radio"]:checked::before {
 }
 #searchInput {
 	width: 80%;
-	margin: 0 auto 0 auto;
+	margin: 0 auto 10px auto;
 }
 input {
 	background: white;
