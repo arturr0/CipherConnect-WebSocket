@@ -38,14 +38,14 @@ app.set('view engine', 'pug');
 
 // Handle file upload route
 const io = require('socket.io')(server, { 
-    maxHttpBufferSize: 10 * 1024 * 1024,
+    maxHttpBufferSize: 200 * 1024,
     debug: true  // Enable verbose logging
 });
 
 app.use('/uploads', express.static(uploadsDir)); // Serve images from the uploads directory
 //app.use('/uploads', express.static('uploads'));
 app.use(require('express-fileupload')({
-    limits: { fileSize: 10 * 1024 * 1024 } // 1 MB
+    limits: { fileSize: 200 * 1024 } 
 }));
 // Create uploads directory if it doesn't exist
 if (!fs.existsSync(uploadsDir)) {
@@ -546,7 +546,7 @@ io.on('connection', (socket) => {
                             // Check if the recipient has `groupRec` in users table matching `group`
                             db.get(`SELECT id FROM users WHERE id = ? AND groupRec = ?`, [recId, group], (err, userInGroup) => {
                                 if (err) {
-                                    console.error('Error checking group:', err);
+                                    console.error('Error checking user group:', err);
                                     return;
                                 }
 
@@ -1768,7 +1768,7 @@ io.on('connection', (socket) => {
 
                 db.run(insertInviteSQL, [userIds[username], userIds[username], groupId, groupName, 1], err => {
                     if (err) {
-                        console.error('Error inserting invite:', err);
+                        console.error('Error inserting creator invite:', err);
                     } else {
                         socket.join(`${groupId}`);
                         console.log(`Creator ${username} joined group room: ${groupId}`);
@@ -1985,5 +1985,4 @@ io.on('connection', (socket) => {
 
 });
     
-
 
