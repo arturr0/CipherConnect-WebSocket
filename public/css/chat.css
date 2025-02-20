@@ -1,217 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-.dropdown-container .dropdown-content {
-	animation: hideOverflow 0s ease 0.3s forwards;
-}
-@keyframes setOverflow {
-	to {
-		overflow: auto;
-	}
-}
-/* Keyframes to hide overflow after collapsing */
-@keyframes hideOverflow {
-	0% {
-		overflow: auto;
-	}
-	100% {
-		overflow: hidden;
-	}
-}
-@media (hover: hover) and (pointer: fine) {
-	#friendsAndGroups, #users {
-	scrollbar-gutter: stable;
-	}
-	button:hover {
-		opacity: 0.5;
-	}
-	.counter {
-		margin-top: 10px;
-		left: calc(22%);
 
-	}
-	.menuIcon {
-		font-size: 40px;;
-	}
-	.dropdown-container:hover .dropdown-content {
-		
-		z-index: 20;
-		animation: setOverflow 0s ease 0.3s forwards;
-	}
-	
-	
-	.dropdown-container:hover .dropdown-content {
-		max-height: 200px;
-		visibility: visible;
-		opacity: 1;
-		transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-		
-	}
-	.dropdown-container:hover .dropdownToggle::before,
-	.dropdownToggle:hover::before {
-		width: 100%; /* Full width on hover */
-	}
-
-/* Ensure the line remains visible when hovering over the content */
-	.dropdown-content:hover::before {
-		width: 100%; /* Keep the line full width */
-	}
-}
-  
-@media only screen and (max-width: 768px) and (orientation: portrait) and (pointer: coarse) {
-	body {
-/* 		height: 100vh; */
-		background: #0d1117;
-	}
-	.counter {
-		margin-top: 10px;
-		left: calc(22%);
-	}
-	.menuIcon {
-		font-size: 40px;;
-	}
-	#friends #friendsAndGroups {
-		overflow: auto;
-	}
-	#mainContent #searchUsers {
-		height: auto;
-	}
-	#mainContent .modal-content {
-		width: 80vw;
-	}
-	#mainContent #chat_account {
-		justify-content: flex-end;
-		flex-wrap: wrap;
-	}
-	.accountContentText i {
-		display: none;
-	}
-	#accountContent .accountContentText {
-		justify-content: flex-start;
-	}
-	#mainContent #chatContainer {
-		height: calc(43vh + 40px);
-		width: calc(100% - 40vw);
-	}
-	
-	#mainContent #accountContainer {
-		width: calc(100% - 40vw);
-		height: calc(47vh - 40px);
-		border-top: solid 1px #2d343c;
-	}
-
-	#mainContent #messageContainer, 
-	#mainContent #users, 
-	#mainContent #searchUsers, 
-	#mainContent #friendsAndGroups, 
-	#mainContent #scrolledFriends {
-		width: 100%;
-	}
-	
-	#mainContent #account {
-		border: none;
-		padding: 0;
-		margin: 0;
-		width: 100%;
-		height: 100%;
-		background: #0d1117;
-	}
-	#mainContent .left {
-		margin-right: 0;
-	}
-	#mainContent #friends {
-		width: 40%;
-		background: none;
-	}
-
-	#mainContent .dropdownToggle {
-		height: auto;
-		width: 20vw;
-	}
-	#mainContent .counter {
-		margin-top: 0;
-		left: 0;
-	}
-	#account #avatarOrInitials {
-		height: auto;
-		margin-top: 0;
-		display: none;
-	}
-	#avatarOrInitials #avatar {
-		display: none;
-	}
-	#mainContent #accountContent {
-		margin-top: 0;
-		width: 100%;
-		background: #0d1117;
-	}
-	#mainContent #avatarOrInitials {
-		margin-top: 0;
-	}
-	
-	#mainContent #search-input {
-		width: 30vw;
-	}
-	
-	#mainContent {
-		height: 100vh;
-	}
-	
-	#chatInput #message {
-		width: 100%;
-	}
-	.dropdownToggle .dropdown-content {
-		max-height: 0;  /* Initially collapsed */
-		visibility: hidden;
-		overflow: hidden;
-		opacity: 0;
-		transition: max-height 0.3s ease, opacity 0.3s ease;
-	}
-	
-	
-	.dropdown-container #invitationContent, .dropdown-container #messagesContent, .dropdown-container #groupsContent {
-		width: 20vw;
-	}
-}
-@media only screen and (max-width: 1200px) and (orientation: landscape) and (pointer: coarse) {
-	#account #avatarOrInitials, #account #accountContent {
-		margin-top: 0;
-	}
-	.menuIcon {
-    		font-size: 30px;
-	}
-	.counter {
-		margin-top: 3px;
-		left: 0;
-	}
-	#friends #friendsAndGroups {
-		overflow: auto;
-	}
-	.accountContentText i {
-		display: none;
-	}
-	#accountContent .accountContentText {
-		justify-content: flex-start;
-	}
-	#account #accountContent {
-		margin: 0;
-		place-content: center;
-	}
-	#accountContainer #account {
-		place-content: center;
-	}
-	#accountContent .accountContentText {
-		font-size: clamp(10px, 2vw, 2rem);
-    	white-space: nowrap; /* Prevents text from wrapping */
-    	text-overflow: ellipsis; /* Optional: Adds "..." if text overflows */
-	}
-	#account #avatarOrInitials {
-		height: auto;
-		margin-top: 0;
-		display: none;
-	}
-	.user {
-		margin-left: 0;
-	}
-}
 body {
 	
 	padding: 0;
@@ -245,7 +33,6 @@ button {
 /* For WebKit browsers (Chrome, Safari, newer Edge) */
 #messageContainer::-webkit-scrollbar, #friendsAndGroups::-webkit-scrollbar, #users::-webkit-scrollbar, #scrolledFriends::-webkit-scrollbar  {
 	width: 10px; /* Set the width of the scrollbar */
-	
 }
 .icon-spin3 {
 	margin: auto;
@@ -260,7 +47,6 @@ button {
 /* For WebKit browsers (Chrome, Safari, newer Edge) */
 #messageContainer::-webkit-scrollbar, #friendsAndGroups::-webkit-scrollbar, #users::-webkit-scrollbar, #scrolledFriends::-webkit-scrollbar {
 	width: 10px; /* Set the width of the scrollbar */
-	
 }
 .display {
 	display: none;
@@ -270,24 +56,20 @@ button {
 	margin: 10px;
 	width: 15vw;
 }
-
 .user {
 	display: flex;
-	align-items: center; /* Center vertically */
-	justify-content: center; /* Center horizontally */
-	margin-top: 10px;
+	align-items: center; 
+	justify-content: center; 
 	position: relative;
 	margin-left: 10px;
 }
-
 .profile-container {
 	position: relative; 
 	display: flex;
 	align-items: center; 
 	justify-content: center; 
 	width: 40px; 
-	height: 40px; 
-	/* margin: 0 auto; */
+	height: 40px;
 }
 .profile-container img {
 	object-fit: cover;
@@ -316,8 +98,6 @@ button {
 	font-size: 25px;
 	font-weight: bolder;
 }
-
-
 .initials {
 	align-items: center; 
 	justify-content: center; 
@@ -333,45 +113,27 @@ button {
 	display: flex;
 	gap: 5px; 
 }
-/* 
-
-
-/* Scrollbar thumb */
 #messageContainer::-webkit-scrollbar-thumb, #users::-webkit-scrollbar-thumb, #friendsAndGroups::-webkit-scrollbar-thumb, #scrolledFriends::-webkit-scrollbar-thumb {
 	background-color: darkgray; /* Color of the scrollbar thumb */
 	
 }
-
 /* Scrollbar track */
 #messageContainer::-webkit-scrollbar-track, #users::-webkit-scrollbar-track, #friendsAndGroups::-webkit-scrollbar-track, #scrolledFriends::-webkit-scrollbar-track {
 	background: transparent; /* Background of the scrollbar track */
 }
-
 /* For Firefox */
 #messageContainer {
 	scrollbar-width: thin; /* Sets the scrollbar to be thin (default option) */
 	scrollbar-color: darkgray transparent; /* Color of the scrollbar thumb and track */
 }
-
 /* For Internet Explorer and Edge (legacy) */
 #messageContainer, #users, #searchUsers, #friendsAndGroups, #scrolledFriends {
 	-ms-overflow-style: scrollbar; /* Sets the scrollbar to be visible */
 }
-@font-face {
-	font-family: 'fontello';
-	src: url('fontello.woff2') format('woff2'),
-	url('fontello.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-h1 a {
-	color: red;
-}
-
 #menu {
+	display: flex;
 	width: 100vw;
 	height: 10vh;
-	display: flex;
 	background: #0d1117;
 }
 #menuDiv {
@@ -379,8 +141,9 @@ h1 a {
 	justify-content: end;
 	margin: auto;
 }
-
 .counter {
+	position: absolute;  
+	top: 0;
 	margin-bottom: auto;
 	background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(70, 199, 252, 1) 100%);
 	border-radius: 50%;
@@ -390,25 +153,29 @@ h1 a {
 	justify-content: center;
 	align-items: center;
 	z-index: 2;
-	position: absolute;  
-	top: 0;
 	font-weight: bolder; 
 }
-
 .dropdown-container {
 	position: relative;
 	display: inline-block;
 	cursor: pointer;
 }
-
-/* Dropdown button styling */
-.dropdown-btn {
-	background-color: #3498db;
-	color: white;
-	padding: 10px 20px;
-	font-size: 16px;
-	border: none;
-	cursor: pointer;
+.dropdown-container .dropdown-content {
+	animation: hideOverflow 0s ease 0.3s forwards;
+}
+@keyframes setOverflow {
+	to {
+		overflow: auto;
+	}
+}
+/* Keyframes to hide overflow after collapsing */
+@keyframes hideOverflow {
+	0% {
+		overflow: auto;
+	}
+	100% {
+		overflow: hidden;
+	}
 }
 #invitationContent, #messagesContent, #groupsContent {
 	width: 10vw;
@@ -419,20 +186,15 @@ h1 a {
 	width: 10vw;
 	max-height: 0;
 	overflow: hidden;
-	
 	z-index: 20;
 	transition: max-height 0.7s ease;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	background: #0483c9;
 }
-
-
 /* Smooth scroll up when not hovered */
 .dropdown-container .dropdown-content {
 	animation: hideOverflow 0s ease 0.3s forwards;
 }
-
-
 /* Keyframes to hide overflow after collapsing */
 @keyframes hideOverflow {
 	0% {
@@ -442,30 +204,19 @@ h1 a {
 		overflow: hidden;
 	}
 }
-
-.no-hover .dropdown-content {
-	max-height: 0; /* Prevent max-height */
-	visibility: hidden; /* Hide content */
-	opacity: 0; /* Fade out */
-	transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition */
-}
-
-
 /* Sliding line effect */
 .dropdownToggle {
-	position: relative;
-	width: 10vw;
-	height: 10vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
+	width: 10vw;
+	height: 10vh;
 }
-
 /* Underline styling */
 .dropdownToggle {
 	position: relative; /* Ensure the position is relative for the ::before pseudo-element */
 }
-
 .dropdownToggle::before {
 	content: '';
 	position: absolute;
@@ -476,32 +227,25 @@ h1 a {
 	background-color: #1cd679; /* Line color */
 	transition: width 0.4s ease; /* Animate width only */
 }
-
-
 .dropdown-content::-webkit-scrollbar {
 	width: 12px;
 }
-
 .dropdown-content::-webkit-scrollbar-track {
 	background: #f1f1f1;
 }
-
 .dropdown-content::-webkit-scrollbar-thumb {
 	background-color: #888;
 	border-radius: 6px;
 	border: 3px solid #f1f1f1;
 }
-
 .dropdown-content::-webkit-scrollbar-thumb:hover {
 	background-color: #555;
 }
-
 /* Firefox Scrollbar Styling */
 .dropdown-content {
 	scrollbar-width: thin;
 	scrollbar-color: #888 #f1f1f1;
 }
-
 /* Dropdown list items */
 .dropdown-content div {
 	padding: 10px;
@@ -509,29 +253,21 @@ h1 a {
 	border-bottom: 1px solid #ddd;
 	background-color: #f9f9f9;
 }
-
 .dropdown-content div:hover {
 	background-color: #ddd;
 }
-
 /* Hide dropdown with sliding effect */
 .dropdown-container .dropdown-content.hide {
 	max-height: 0; /* Hide the content */
-	
 	transition: max-height 0.7s ease;
 	animation: hideOverflow 0s ease 0.3s forwards;
 	
 }
 .hide {
 	max-height: 0; /* Hide the content */
-	
 	transition: max-height 0.7s ease;
 	animation: hideOverflow 0s ease 0.3s forwards;
-	
 }
-
-
-
 #friends.hidden {
 	opacity: 0;
 	visibility: hidden;
@@ -541,13 +277,11 @@ h1 a {
 	display: none;
 	color: green;
 }
-
 @keyframes blinker {
 	50% {
 		opacity: 0;
 	}
 }
-
 .blink {
 	animation: blinker 1s linear infinite;
 }
@@ -558,30 +292,24 @@ h1 a {
 	flex-direction: column;
 	height: 90vh;
 	width: 50vw;
-	
 	margin-left: auto;
 	z-index: 10;
-	
 	border-top: solid 1px #2d343c;
 	border-left: solid 1px #2d343c;
 	background: #000a00;
-	
-	
 }
 #messageContainer {
 	overflow: auto;
 }
 #accountContainer {
-	width: 25vw;
-	height: 90vh;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	
+	width: 25vw;
+	height: 90vh;
 	background: #000a00;
 	border-top: solid 1px #2d343c;
 	z-index: 0;
-	
 }
 #account {
 	border: solid 1px #2d343c;
@@ -592,7 +320,6 @@ h1 a {
 	width: calc(100% - 10px);
 	height: calc(100% - 20px);
 	margin: 10px 10px 10px 0;
-	
 }
 #avatarOrInitials {
 	margin-top: 50px;
@@ -606,13 +333,11 @@ h1 a {
 	white-space: nowrap;
 }
 .accountContentText {
-	margin: 10px;
-	
-	font-size: 20px;
 	display: flex;
-	
 	justify-content: flex-end;
 	flex-grow: 1;
+	margin: 10px;
+	font-size: 20px;
 }
 .accountContentText:hover {
 	text-decoration: underline;
@@ -638,6 +363,9 @@ h1 a {
 	font-weight: bolder;
 }
 #avatar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 80px;
 	height: 80px;
 	border-radius: 50%;
@@ -645,51 +373,39 @@ h1 a {
 	margin-right: auto;
 	margin-top: 10px;
 	border: solid 1px none;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 .display {
 	display: none;
 }
 .custom-file-label {
 	display: inline-block;
-	
 	color: white;
 	cursor: pointer;
 	border: none;
-	
 }
-
 .custom-file-label:hover {
 	color: #0056b3;
 }
-
-
 #chat {
 	display: flex;
-	flex-direction: column; /* Stack items from top to bottom */
-	height: 100%; /* Controls overall height of the chat */
-	overflow-y: auto; /* Show scrollbar when necessary */
-	position: relative; /* Ensures proper stacking and layout */
-	min-height: 0; /* Prevents overflow issues */
-	padding: 0; /* Optional padding around chat */
-	
+	flex-direction: column; 
+	height: 100%; 
+	overflow-y: auto; 
+	position: relative; 
+	min-height: 0; 
+	padding: 0; 
 	background: #151b23;;
 	margin: 10px;
 	border: solid 1px #2d343c;
 	border-radius: 5px;
-	
-	
 }
 #receiver {
+	display: flex;
 	margin-bottom: auto;
 	height: 40px;
 	margin-right: 10px;
 	margin-left: 10px;
 	margin-top: 10px;
-	display: flex;
-	
 }
 #receiverImg {
 	width: 40px;
@@ -698,12 +414,11 @@ h1 a {
     border-radius: 50%;
 }
 #receiverAvatar {
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: center;width: 40px;
+	height: 40px;
+	border-radius: 50%;
 	margin-right: 5px;
 }
 #receiverInitials {
@@ -746,14 +461,13 @@ h1 a {
 	transition: opacity 0.5s ease, visibility 0s linear 0s;  
 }
 .message {
-	padding: 10px; /* Example padding */
-	border-radius: 5px; /* Optional rounded corners */
+	padding: 10px; 
+	border-radius: 5px; 
 }
 
 .bu:last-child {
-	margin-top: auto; /* Push the last message to the bottom */
+	margin-top: auto; 
 }
-
 .message {
 	
 	padding: 10px; 
@@ -925,48 +639,27 @@ h1 a {
 
 
 .message {
-	/* background-color: white; Example background color */
-	padding: 10px; /* Example padding */
-	border-radius: 5px; /* Optional rounded corners */
-	/* No margin for spacing */
+	padding: 10px; 
+	border-radius: 5px; 
 }
-
-.bu:last-child {
-	margin-top: auto; /* Push the last message to the bottom */
+.message {
+	padding: 10px;
+	border-radius: 5px;
 }
 
 .message {
-	/* Style for individual messages */
-	/* background-color: white; Example background color */
-	padding: 10px; /* Example padding */
-	border-radius: 5px; /* Optional rounded corners */
+	margin-top: auto; 
 }
-
-
-/* Last child or message element */
-.message {
-	margin-top: auto; /* Pushes this element to the bottom */
-}
-
-
-/* Last child or message element */
-.message {
-	margin-top: auto; /* Pushes this element to the bottom */
-}
-
 #messages {
 	flex-grow: 1;
-	overflow-y: auto; /* Enable vertical scrolling */
+	overflow-y: auto; 
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	/* background: red; */
 }
-
 .bubble {
 	--r: 1em;  /* the radius */
 	--t: 1.5em; /* the size of the tail */
-	
 	align-self: flex-end;
 	max-width: 300px;
 	padding: 1em 1em 0.2em;
@@ -995,10 +688,6 @@ h1 a {
 	margin-right: 20px;
 	background: #3d99c6;
 }
-
-
-
-
 #message {
 	border: none;
 	outline: none;
@@ -1009,7 +698,6 @@ h1 a {
 	padding: 10px;
 	font-weight: bold;
 }
-
 .messRec {
 	align-self: flex-start;
 	padding: 10px;
@@ -1024,7 +712,6 @@ h1 a {
 	padding: 10px;
 	font-weight: bold;
 }
-
 .messRec {
 	align-self: flex-start;
 	padding: 10px;
@@ -1032,8 +719,8 @@ h1 a {
 }
 #friends {
 	position: absolute;
-	width: 25vw; /* Take up 25% of the viewport width */
-	left: 0; /* Start fully visible */
+	width: 25vw; 
+	left: 0; 
 	top: 10vh;
 	height: 90vh;
 	transform: translateX(0);
@@ -1041,38 +728,30 @@ h1 a {
 	z-index: 0;
 	display: flex;
 	flex-direction: column;
-	
 	background: #0d1117;
-	
 }
 #friendsSearchBg {
 	position: absolute;
-	width: 100%; /* Take up 25% of the viewport width */
-	left: 0; /* Start fully visible */
+	width: 100%; 
+	left: 0; 
 	top: 10vh;
 	height: 90vh;
-	
 	z-index: -11;
-	
-	
 	background: #0d1117;
 }
-
 #friendsAndGroups {
 	height: 96%;
 	margin-left: 10px;
 }
 #friendsAndGroups:hover {
-	
-	
 	overflow: auto;
 }
 #groupsContainer, #friendsContainer {
 	background-color: transparent;
 }
-
-
 #searchUsers {
+	display: flex;
+	flex-direction: column;
 	position: absolute;
 	transform: translateX(-100%); /* Start off-screen to the left */
 	top: 10vh;
@@ -1082,40 +761,29 @@ h1 a {
 	opacity: 1;
 	visibility: visible;
 	z-index: 10;
-	display: flex;
-	flex-direction: column;
 	background: #0d1117;
 }
-
 #searchUsers.move-left {
 	transform: translateX(0); /* Fully in view */
 }
-
 #searchUsers.move-right {
 	transform: translateX(-100%); /* Move back off-screen */
 }
 #friends.move-left2 {
 	transform: translateX(+100%); /* Fully in view */
 }
-
 #friends.move-right2 {
 	transform: translateX(0); /* Move back off-screen */
 }
-
 #searchUsers.hidden {
 	opacity: 0;
 	visibility: hidden;
 }
-
-
-
 #content {
 	width: 100vw;
 	height: 100vh;
-	
 	position: relative; 
 }
-
 #mainContent .modal {
     position: absolute;
     left: 50%;
@@ -1128,27 +796,22 @@ h1 a {
     transform-origin: center;
     will-change: transform, opacity;
 }
-
 #mainContent .modal.show {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1; /* Make it visible */
 }
-
-
 .modal-content {
-	background: #0d1117;
-	border: solid 1px #2d343c;
-	border-radius: 5px;
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	align-content: center;
 	align-items: center;
 	min-width: 40vw;
+	background: #0d1117;
+	border: solid 1px #2d343c;
+	border-radius: 5px;
 	text-align: center;
 }
-
-
 .modal button {
 	margin: 10px;
 	padding: 8px 16px;
@@ -1224,4 +887,186 @@ input[type="radio"]:checked::before {
 }
 input {
 	background: white;
+}
+
+@media (hover: hover) and (pointer: fine) {
+	#friendsAndGroups, #users {
+	scrollbar-gutter: stable;
+	}
+	button:hover {
+		opacity: 0.5;
+	}
+	.counter {
+		margin-top: 10px;
+		left: calc(22%);
+	}
+	.menuIcon {
+		font-size: 40px;;
+	}
+	.dropdown-container:hover .dropdown-content {
+		z-index: 20;
+		animation: setOverflow 0s ease 0.3s forwards;
+	}
+	.dropdown-container:hover .dropdown-content {
+		max-height: 200px;
+		visibility: visible;
+		opacity: 1;
+		transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	}
+	.dropdown-container:hover .dropdownToggle::before,
+	.dropdownToggle:hover::before {
+		width: 100%; /* Full width on hover */
+	}
+	/* Ensure the line remains visible when hovering over the content */
+	.dropdown-content:hover::before {
+		width: 100%; /* Keep the line full width */
+	}
+}
+  
+@media only screen and (max-width: 768px) and (orientation: portrait) and (pointer: coarse) {
+	body {
+		background: #0d1117;
+	}
+	.counter {
+		margin-top: 10px;
+		left: calc(22%);
+	}
+	.menuIcon {
+		font-size: 40px;;
+	}
+	#friends #friendsAndGroups {
+		overflow: auto;
+	}
+	#mainContent #searchUsers {
+		height: auto;
+	}
+	#mainContent .modal-content {
+		width: 80vw;
+	}
+	#mainContent #chat_account {
+		justify-content: flex-end;
+		flex-wrap: wrap;
+	}
+	.accountContentText i {
+		display: none;
+	}
+	#accountContent .accountContentText {
+		justify-content: flex-start;
+	}
+	#mainContent #chatContainer {
+		height: calc(43vh + 40px);
+		width: calc(100% - 40vw);
+	}
+	#mainContent #accountContainer {
+		width: calc(100% - 40vw);
+		height: calc(47vh - 40px);
+		border-top: solid 1px #2d343c;
+	}
+	#mainContent #messageContainer, 
+	#mainContent #users, 
+	#mainContent #searchUsers, 
+	#mainContent #friendsAndGroups, 
+	#mainContent #scrolledFriends {
+		width: 100%;
+	}
+	#mainContent #account {
+		border: none;
+		padding: 0;
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		background: #0d1117;
+	}
+	#mainContent .left {
+		margin-right: 0;
+	}
+	#mainContent #friends {
+		width: 40%;
+		background: none;
+	}
+	#mainContent .dropdownToggle {
+		height: auto;
+		width: 20vw;
+	}
+	#mainContent .counter {
+		margin-top: 0;
+		left: 0;
+	}
+	#account #avatarOrInitials {
+		height: auto;
+		margin-top: 0;
+		display: none;
+	}
+	#avatarOrInitials #avatar {
+		display: none;
+	}
+	#mainContent #accountContent {
+		margin-top: 0;
+		width: 100%;
+		background: #0d1117;
+	}
+	#mainContent #avatarOrInitials {
+		margin-top: 0;
+	}
+	#mainContent #search-input {
+		width: 30vw;
+	}
+	#mainContent {
+		height: 100vh;
+	}
+	#chatInput #message {
+		width: 100%;
+	}
+	.dropdownToggle .dropdown-content {
+		max-height: 0;  /* Initially collapsed */
+		visibility: hidden;
+		overflow: hidden;
+		opacity: 0;
+		transition: max-height 0.3s ease, opacity 0.3s ease;
+	}
+	.dropdown-container #invitationContent, .dropdown-container #messagesContent, .dropdown-container #groupsContent {
+		width: 20vw;
+	}
+}
+
+@media only screen and (max-width: 1200px) and (orientation: landscape) and (pointer: coarse) {
+	#account #avatarOrInitials, #account #accountContent {
+		margin-top: 0;
+	}
+	.menuIcon {
+    		font-size: 30px;
+	}
+	.counter {
+		margin-top: 3px;
+		left: 0;
+	}
+	#friends #friendsAndGroups {
+		overflow: auto;
+	}
+	.accountContentText i {
+		display: none;
+	}
+	#accountContent .accountContentText {
+		justify-content: flex-start;
+	}
+	#account #accountContent {
+		margin: 0;
+		place-content: center;
+	}
+	#accountContainer #account {
+		place-content: center;
+	}
+	#accountContent .accountContentText {
+		font-size: clamp(10px, 2vw, 2rem);
+    	white-space: nowrap; /* Prevents text from wrapping */
+    	text-overflow: ellipsis; 
+	}
+	#account #avatarOrInitials {
+		height: auto;
+		margin-top: 0;
+		display: none;
+	}
+	.user {
+		margin-left: 0;
+	}
 }
