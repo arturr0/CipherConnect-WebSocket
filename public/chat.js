@@ -923,10 +923,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			// File input listener
 			input.addEventListener('change', () => {
 				const file = input.files[0];
-				const maxFileSize = 200 * 1024; 
+				const maxFileSize = 47 * 1024; // 1 MB in bytes
 				if (file.size > maxFileSize) {
-					alert(`File is too large. Max size is 200 KB`);
-					console.error(`File is too large. Max size is 200 KB`);
+					alert(`File is too large. Max size is 47 KB`);
+					console.error(`File is too large. Max size is 47 KB`);
 					return;
 				}
 				if (!file) {
@@ -1393,7 +1393,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	socket.on('user info', ({ id, profileImage }) => {
 		console.log(`User ID: ${id}`);
 		if (profileImage != null && document.getElementById('initials')) document.getElementById('initials').remove();
-		else if (profileImage != null) document.getElementById('avatar').innerHTML = '';
+		else if (profileImage != null) document.getElementById('avatarOrInitials').innerHTML = '';
 		else {
 			document.getElementById('initials').classList.remove('display');
 			document.getElementById('initials').style.visibility = 'visible';
@@ -1841,10 +1841,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 		
-		const maxFileSize = 200 * 1024; 
+		const maxFileSize = 47 * 1024; 
 		if (file.size > maxFileSize) {
-			alert(`File is too large. Max size is 200 KB`);
-			console.error(`File is too large. Max size is 200 KB`);
+			alert(`File is too large. Max size is 47 KB`);
+			console.error(`File is too large. Max size is 47 KB`);
 			return;
 		}
 		
