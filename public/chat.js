@@ -28,12 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	deleteAccount.addEventListener('click', () => {
 		
 		const modal = document.getElementById('deleteModal');
-		// modal.style.visibility = 'visible'; 
 		modal.classList.add('show');
-		// Trigger the animation
-		// setTimeout(() => {
-		// 	modal.classList.add('show');
-		// }, 20); 
 		
 		document.getElementById('confirmDelete').onclick = function() {
 			menuGroups.classList.add('dropdown-content');
@@ -83,11 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.getElementById('crypto').addEventListener('click', () => {
 		storeMessage = !storeMessage;
 		cryptoDiv.style.width = `${originalWidth}px`
-		if(document.getElementById('crypto').textContent.includes('No Storing Messages')) {
-			
-			
-			document.getElementById('crypto').textContent = 'Store Messages';
-		}
+		if(document.getElementById('crypto').textContent.includes('No Storing Messages')) document.getElementById('crypto').textContent = 'Store Messages';
 		else document.getElementById('crypto').textContent = 'No Storing Messages';
 		const icon = document.createElement('i')
 		icon.classList.add('icon-user-secret');
@@ -100,8 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	let receiver = '';
 	let group = null;
 	
-	
-	
 	if (document.getElementById('message')) {
 		document.getElementById('message').addEventListener('keydown', function(e) {
 			let messageSent = document.getElementById('message').value;
@@ -111,11 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				console.log(receiver, group);
 				e.preventDefault();
 				if (messageSent !== null && messageSent.trim() !== '' && ((receiver == '' && group != null) || (receiver != '' && group == null))) {
-					//const chat = document.getElementById('chat');
-					//const receiver = 'art2';
-					console.log('my mess');
+					
 					const sendTime = new Date().toISOString();;
-					console.log(sendTime);
 					const hours = new Date().getHours();
 					const minutes = new Date().getMinutes();
 					
@@ -123,11 +109,13 @@ document.addEventListener('DOMContentLoaded', () => {
 					sendDiv.classList.add('bubble', 'left');
 					sendDiv.style.wordBreak = 'break-word';
 					sendDiv.textContent = inputValString;  // Add the message text
+					
 					const timeAndIcon = document.createElement('div');
 					timeAndIcon.classList.add('timeAndIcon');
 					timeAndIcon.style.display = 'flex';
 					timeAndIcon.style.marginLeft = 'auto';
 					// Create a paragraph element for the date
+					
 					const dateParagraph = document.createElement('p');
 					dateParagraph.textContent = `${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;  // Format and add the date
 					dateParagraph.style.marginBottom = '0';
@@ -149,12 +137,14 @@ document.addEventListener('DOMContentLoaded', () => {
 					
 					console.log(username);
 					
-					if (receiver != '') socket.emit('chatMessage', { username, messageSent, receiver, sendTime, storeMessage });
+					if (receiver != '')
+						socket.emit('chatMessage', { username, messageSent, receiver, sendTime, storeMessage });
 					else if (group != null)
 						socket.emit('group message', { username, group, messageSent, storeMessage, sendTime });
+					
 					document.getElementById('message').value = '';
 					document.getElementById('message').style.height = '80px';
-					console.log(messageSent);
+					
 					chat.scrollTo({
 						top: chat.scrollHeight,
 						behavior: 'smooth'
@@ -166,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 	const searchUsers = document.getElementById('searchUsers');
 	const friends = document.getElementById('friends');
-	
 	
 	function updatesearchUsersWidth() {
 		
@@ -196,13 +185,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			document.getElementById('findUsersText').textContent = 'Find users';
 			switchUsers.style.display = 'block';
 			switchFriends.style.display = 'none';
-			
 		} else {
 			// Move both elements to the left
 			usersDiv.style.overflowX = 'auto';
 			searchUsers.classList.remove('move-right');
 			searchUsers.classList.add('move-left');
-			// document.getElementById('friends').style.zIndex = '-10';
 			
 			friends.classList.remove('move-right2');
 			friends.classList.add('move-left2');
@@ -220,6 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		socket.emit('login', username);
 		console.log('Username emitted to server:', username);
 	});
+	
 	socket.on('deleted', () => {
 		window.location.href = '/';    
 	});
@@ -231,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const targetDivs = document.querySelectorAll('.username'); // Select all .username elements
 		
 		targetDivs.forEach(div => {
-			if (div.textContent == data) { // Match the text content
+			if (div.textContent == data) { 
 				const outerParent = div.closest('.user, .friends'); // Find the closest outerparent
 				if (outerParent) {
 					outerParent.remove(); // Remove the outer parent
@@ -243,7 +231,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 		
 		if (receiver == data) {
-			
 			receiver = '';
 			receiverAvatar.innerHTML = ''; 
 			receiverAvatar.textContent = ''; 
@@ -293,6 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		messCounter.setAttribute('value', newMessageCntr);
 		messCounter.textContent = newMessageCntr;
 	});
+	
 	socket.on('send group message', (data) => {
 		signal.play();
 		console.log(data);
@@ -321,12 +309,14 @@ document.addEventListener('DOMContentLoaded', () => {
 			timeAndIcon.classList.add('timeAndIcon');
 			timeAndIcon.style.display = 'flex';
 			timeAndIcon.style.marginRight = 'auto';
+			
 			// Create a paragraph element for the date
 			const dateParagraph = document.createElement('p');
 			dateParagraph.textContent = formatDateComparison(data.time);  // Format and add the date
 			dateParagraph.style.marginBottom = '0';
 			// Append the date paragraph to the message div
 			timeAndIcon.appendChild(dateParagraph);
+			
 			if (!data.store) {
 				const cryptoIcon = document.createElement('i');
 				cryptoIcon.classList.add('icon-user-secret');
@@ -335,7 +325,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				cryptoIcon.style.marginLeft = '3px';
 				timeAndIcon.appendChild(cryptoIcon);    
 			}
-			
 			
 			recDiv.appendChild(timeAndIcon);
 			
@@ -350,7 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 		else {
 			let existingMessage = document.querySelector(`.unreadMessages[group='${data.groupOfMessage}']`);
-			
 			// Check if the user's unread message div already exists
 			if (!existingMessage) {
 				// Create a new unread message div for the specific user
@@ -359,8 +347,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				unreadMessage.setAttribute('value', '1'); // Set initial value to 1
 				unreadMessage.setAttribute('group', data.groupOfMessage); // Set data-username for this user
 				unreadMessage.textContent = `${data.groupName} 1`; // Display initial unread count
-				
-				// Append to the messages content
 				document.getElementById('messagesContent').appendChild(unreadMessage);
 			} else {
 				// If the element exists, update its value
@@ -392,10 +378,9 @@ document.addEventListener('DOMContentLoaded', () => {
 					// Remove the div if it matches the attribute value
 					let messageValue = parseInt(messCounter.getAttribute('value'), 10) || 0; // Default to 0 if NaN
 					messageValue -= parseInt(div.getAttribute('value'), 10);
-					//console.log(messageValue);
+					
 					messCounter.setAttribute('value', messageValue);
 					messCounter.textContent = messageValue; 
-					//div.remove();
 				}
 			});
 		}
@@ -412,7 +397,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			img.id = 'receiverImg';
 			img.src = groupAvatar;
 			receiverAvatar.appendChild(img);
-			
 		}
 		else {
 			const initials = document.createElement('div');
@@ -454,10 +438,12 @@ document.addEventListener('DOMContentLoaded', () => {
 				timeAndIcon.classList.add('timeAndIcon');
 				timeAndIcon.style.display = 'flex';
 				timeAndIcon.style.marginRight = 'auto';
+				
 				// Create a paragraph element for the date
 				const dateParagraph = document.createElement('p');
 				dateParagraph.textContent = formatDateComparison(message.sendTime);  // Format and add the date
 				dateParagraph.style.marginBottom = '0';
+				
 				// Append the date paragraph to the message div
 				timeAndIcon.appendChild(dateParagraph);
 				if (message.store == 1) {
@@ -469,10 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					timeAndIcon.appendChild(cryptoIcon);    
 				}
 				
-				
 				recDiv.appendChild(timeAndIcon);
-				
-				// Append the message div to the chat container
 				chat.appendChild(recDiv);
 				
 				// Scroll to the bottom of the chat
@@ -487,6 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				timeAndIcon.classList.add('timeAndIcon');
 				timeAndIcon.style.display = 'flex';
 				timeAndIcon.style.marginLeft = 'auto';
+				
 				// Create a paragraph element for the date
 				const dateParagraph = document.createElement('p');
 				dateParagraph.textContent = `${formatDateComparison(message.sendTime)}`;
@@ -499,22 +483,20 @@ document.addEventListener('DOMContentLoaded', () => {
 					cryptoIcon.style.marginTop = 'auto';
 					timeAndIcon.appendChild(cryptoIcon);    
 				}
+				
 				timeAndIcon.appendChild(dateParagraph);
 				sendDiv.appendChild(timeAndIcon);
-				// Append the date paragraph to the message div
-				//sendDiv.appendChild(dateParagraph);
 				chat.appendChild(sendDiv);
-				
-				
-				
 				
 				adjustMarginForScrollbar();
 				jQuery('#messageContainer').scrollTop(jQuery('#messageContainer')[0].scrollHeight);
 				
 			}
 			document.getElementById('messagesContent').addEventListener('transitionend', function(event) {
+				
 				const parent = event.target;
 				const child = parent.querySelector(`[group='${groupId}']`);
+				
 				if (child) {
 					console.log('remove');
 					child.remove();
@@ -556,6 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		
 		console.log(data);
 	});
+	
 	socket.on('invitationConfirmed', (data) => {
 		console.log(data);
 	});
@@ -616,9 +599,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			
 			const buttonsDiv = document.createElement('div');
 			buttonsDiv.classList.add('buttons');
+			
 			// Create send message button
 			const svgNS = 'http://www.w3.org/2000/svg';
-			
 			// Create the <svg> element
 			const svgElement = document.createElementNS(svgNS, 'svg');
 			svgElement.setAttribute('width', '16');
@@ -677,7 +660,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				const type = 'button'
 				socket.emit('requestGroupMessages', groupId, type);
 							
-				
 				// Clear existing content in #receiverAvatar
 				receiverAvatar.innerHTML = ''; 
 				receiverAvatar.textContent = ''; 
@@ -728,7 +710,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					userElement.remove();
 				}
 			});
-			//1
+			
 			updateProfileImage(profileContainer, data.groupAvatar, initials);
 			groupsContainer.appendChild(fragment);
 		}
@@ -890,8 +872,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				fragment.appendChild(friends);
 				
 				updateProfileImage(profileContainer, friend.image, initials);
-
-				
 			});
 			
 			modalContent.appendChild(fragment);
@@ -965,9 +945,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			sendGroupButton.clickListener = clickListener; // Save the listener function
 			sendGroupButton.addEventListener('click', clickListener);
 			function checkConditions() {
-				const inputValue = nameInput.value.trim(); // Trim spaces
+				const inputValue = nameInput.value.trim(); 
 				
-				// Check if input is not empty and array length is greater than 0
 				if (inputValue.length > 0 && invited.length > 0) {
 					createGroupBtn.style.opacity = '1';
 					createGroupBtn.disabled = false;
@@ -988,9 +967,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 	
 	socket.on('groupCreated', ({ groupId, groupName }) => {
-		console.log('created');
-		
-		// Update the group message and hide the 'createGroup' element
 		
 		const createGroupElement = document.getElementById('createGroup');
 		createGroupElement.classList.remove('show');
@@ -1090,7 +1066,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			invCounter.setAttribute('value', invitationValue);
 			invCounter.textContent = invitationValue;
 			document.getElementById('invitationContent').appendChild(invitation);
-			
 		});
 	});
 	
@@ -1137,6 +1112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			svgElement.setAttribute('height', '16');
 			svgElement.setAttribute('viewBox', '0 0 16 16');
 			svgElement.classList.add('svg-circle')
+			
 			// Create the <circle> element
 			const circle = document.createElementNS(svgNS, 'circle');
 			circle.setAttribute('cx', '8');
@@ -1236,7 +1212,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				});
 			});
 			
-			//3
 			updateProfileImage(profileContainer, friend.image, initials);
 
 		});
@@ -1367,7 +1342,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				console.log('click');
 				const blockedUser = blockButton.value;
 				if (group == blockedUser) {
-					//group = null;
 					receiverAvatar.innerHTML = ''; 
 					receiverAvatar.textContent = ''; 
 					receiverElement.textContent = '';
@@ -1382,10 +1356,8 @@ document.addEventListener('DOMContentLoaded', () => {
 					userElement.remove();
 				}
 			});
-			//4
-			updateProfileImage(profileContainer, Mygroup.groupAvatar, initials);
-
 			
+			updateProfileImage(profileContainer, Mygroup.groupAvatar, initials);
 		});
 		groupsContainer.appendChild(fragment);
 	});
@@ -1408,7 +1380,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			avatarContainer.appendChild(avatar);
 			
 			const img = new Image();
-			img.src = profileImage; // Use the emitted profile image path
+			img.src = profileImage; 
 			img.style.width = '100%';
 			img.style.height = '100%';
 			img.style.borderRadius = '50%';
@@ -1416,9 +1388,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			
 			avatar.appendChild(img);
 		} else {
-			// Handle the case where there's no profile image
 			console.log('No profile image found.');
-			// Optionally show a placeholder or initials
 		}
 	});
 	
@@ -1427,7 +1397,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const divToRemove1 = document.getElementById('avatar');
 		if (divToRemove) divToRemove.remove();
 		if (divToRemove1) divToRemove1.remove();    
-		// Removes the div from the DOM
+		
 		const avatar = document.createElement('div');
 		avatar.id = 'avatar';
 		document.getElementById('avatarOrInitials').appendChild(avatar);
@@ -1436,13 +1406,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		img.src = relativePath;
 		
 		// Set styles for the image
-		img.style.width = '100%'; // Make the image fill the div
-		img.style.height = '100%'; // Make the image fill the div
-		img.style.borderRadius = '50%'; // Apply border radius to the image
-		img.style.objectFit = 'cover'; // Optional: cover the div while maintaining aspect ratio
+		img.style.width = '100%'; 
+		img.style.height = '100%'; 
+		img.style.borderRadius = '50%'; 
+		img.style.objectFit = 'cover'; 
 		
 		avatar.appendChild(img);
-		
 	});
 	
 	const searchInput = document.getElementById('searchInput');
@@ -1459,18 +1428,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 	
-	
-	
-	// Listen for 'foundUsers' event
 	socket.on('inviteProcessed', () => {
 		socket.emit('findUsers', searchUser);
 		console.log('Find users after invite:', searchUser);
 	});
+	
 	socket.on('foundUsers', async (founded) => {
 		console.log('Found users:', founded);
 		
 		// Clear previous user list
-		usersDiv.innerHTML = ''; // Clear the previous list
+		usersDiv.innerHTML = ''; 
 		
 		const fragment = document.createDocumentFragment();
 		
@@ -1500,10 +1467,12 @@ document.addEventListener('DOMContentLoaded', () => {
 			
 			const buttonsDiv = document.createElement('div');
 			buttonsDiv.classList.add('buttons');
+			
 			// Create buttons and append to buttonsDiv...
 			const inviteButton = document.createElement('button');
 			inviteButton.classList.add('invite');
 			inviteButton.value = user.username;
+			
 			const inviteIcon = document.createElement('i');
 			inviteIcon.classList.add('icon-user-plus');
 			inviteButton.appendChild(inviteIcon);
@@ -1563,18 +1532,17 @@ document.addEventListener('DOMContentLoaded', () => {
 						console.log('clonedInitials', clonedInitials)
 						clonedInitials.id = 'receiverInitials';
 						console.log('check');
-
 						clonedInitials.style.display = 'flex';
 						receiverAvatar.appendChild(clonedInitials);
 					}
 				} else {
 					console.warn('Profile container not found.');
 				}
+				
 				const messagesReqtype = 'button';
 				socket.emit('sendMeMessages', username, receiver, messagesReqtype);
 			});
 			
-			// Select all elements with the class 'send'
 			const sendButtons = document.querySelectorAll('.send');
 			
 			blockButton.addEventListener('click', () => {
@@ -1602,10 +1570,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				inviteButton.disabled = true; // Disable button to prevent multiple invites
 				socket.emit('invite', invitedUser);
 			});
-			
 			updateProfileImage(profileContainer, user.profileImage, initials);
 		});
-		
 		usersDiv.appendChild(fragment);
 	});
 	
@@ -1624,19 +1590,23 @@ document.addEventListener('DOMContentLoaded', () => {
 		isTypingVisible = false;
 		adjustMarginForScrollbar();
 		document.getElementById('dots').remove();
+		
 		// Create a div element for the message bubble
 		const recDiv = document.createElement('div');
 		recDiv.classList.add('bubble', 'right');
 		recDiv.style.wordBreak = 'break-word';
 		recDiv.textContent = message.message;  // Add the message text
+		
 		const timeAndIcon = document.createElement('div');
 		timeAndIcon.classList.add('timeAndIcon');
 		timeAndIcon.style.display = 'flex';
 		timeAndIcon.style.marginRight = 'auto';
+		
 		// Create a paragraph element for the date
 		const dateParagraph = document.createElement('p');
 		dateParagraph.textContent = formatDateComparison(message.date);  // Format and add the date
 		dateParagraph.style.marginBottom = '0';
+		
 		// Append the date paragraph to the message div
 		timeAndIcon.appendChild(dateParagraph);
 		if(!message.store) {
@@ -1647,8 +1617,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			cryptoIcon.style.marginLeft = '3px';
 			timeAndIcon.appendChild(cryptoIcon);    
 		}
-		
-		
 		recDiv.appendChild(timeAndIcon);
 		
 		// Append the message div to the chat container
@@ -1756,7 +1724,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const element = event.target.closest('.invitation');
 		
 		if (element) {
-			// Log the data-username or data-groupname attribute based on contentType
+			
 			const nameAttr = contentType === 'invitation' ? 'data-username' : 'groupID';
 			const nameValue = element.getAttribute(nameAttr);
 			console.log(`Clicked ${contentType}:`, nameValue);
@@ -1766,7 +1734,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				gruopName = element.getAttribute('groupName');
 				groupInvitingName = element.getAttribute('creator');
 			}
-			// Prompt the user with the confirm modal
+
 			customConfirm(nameValue, cntr, gruopName, groupInvitingName)
 			.then((response) => {
 				if (response === 'yes') {
@@ -1859,7 +1827,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				fileType: file.type
 			});
 		};
-		
 		reader.readAsDataURL(file);
 	});
 	
@@ -1868,8 +1835,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.getElementById('initials').textContent = currentUsername.charAt(0).toUpperCase();
 	const messageInput = document.getElementById('message');
 	let typingTimer;
-	let typingDelay = 2000; // Set a delay for stopping typing event (in ms)
-	
+	let typingDelay = 2000; // Set a delay for stopping typing event 
+
 	let typingIndicator = null; // To track the current typing indicator
 	let typingBubble = null; // To track the current typing bubble
 	
@@ -1913,7 +1880,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			dot.style.animationDelay = `${i * 0.2}s`;
 			typingIndicator.appendChild(dot);
 		}
-		
 		return typingIndicator;
 	}
 	
@@ -1994,21 +1960,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 	
-	// Function to append a new text message bubble
-	function appendTextBubble(message) {
-		// Before appending the new text bubble, hide any existing typing indicator
-		hideTypingIndicator();
-		
-		const textBubble = document.createElement('div');
-		textBubble.classList.add('bubble', 'right');
-		textBubble.textContent = message;
-		
-		// Append the new text bubble to the chat container
-		chat.appendChild(textBubble);
-	}
-	
 	function adjustMarginForScrollbar() {
-		//const chat = document.getElementById('chat');
+		
 		const messages = document.querySelectorAll('.left');
 		
 		// Check if the scrollbar is visible
@@ -2041,12 +1994,12 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 			});
 		}
+		
 		receiverAvatar.innerHTML = ''; 
 		receiverAvatar.textContent = ''; 
 		receiverAvatar.textContent = ''; 
 		receiverElement.textContent = receiver;
-		// Clear existing content in #receiverAvatar
-		// if (decryptedMessages.profileImage && )
+		
 		if (decryptedMessages.profileImage) {
 			// Check for the presence of an img element
 			const img = document.createElement('img');
@@ -2067,6 +2020,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 		
 		chat.innerHTML = '';
+		
 		decryptedMessages.messages.forEach(message => {
 			if (message.senderUsername == username) {
 				
@@ -2095,9 +2049,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				// Append the date paragraph to the message div
 				chat.appendChild(sendDiv);
 				
-				
-				
-				
 				adjustMarginForScrollbar();
 				jQuery('#messageContainer').scrollTop(jQuery('#messageContainer')[0].scrollHeight);
 			}
@@ -2119,6 +2070,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				dateParagraph.style.marginBottom = '0';
 				// Append the date paragraph to the message div
 				timeAndIcon.appendChild(dateParagraph);
+				
 				if(message.toDelete == 1) {
 					const cryptoIcon = document.createElement('i');
 					cryptoIcon.classList.add('icon-user-secret');
@@ -2128,14 +2080,13 @@ document.addEventListener('DOMContentLoaded', () => {
 					timeAndIcon.appendChild(cryptoIcon);    
 				}
 				
-				
 				recDiv.appendChild(timeAndIcon);
-				//recDiv.appendChild(dateParagraph);
 				
 				// Append the message div to the chat container
 				chat.appendChild(recDiv);
 				jQuery('#messageContainer').scrollTop(jQuery('#messageContainer')[0].scrollHeight);
 			}
+			
 			document.getElementById('messagesContent').addEventListener('transitionend', function(event) {
 				const parent = event.target;
 				const child = parent.querySelector(`[data-username='${decryptedMessages.receiverUsername}']`);
@@ -2150,8 +2101,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			
 		});
 		if (decryptedMessages.type == 'button') document.querySelector(`.unreadMessages[data-username='${decryptedMessages.receiverUsername}']`)?.remove();
-		
-		
 	})
 	
 	function closeModal() {
@@ -2164,7 +2113,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		menuInvitation.classList.add('dropdown');
 		menuMessages.classList.add('dropdown-content');
 		menuMessages.classList.add('dropdown');
-		
 	}
 	
 	function customConfirm(inviting, cntr, groupName, groupInvitingName) {
@@ -2266,5 +2214,4 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		}
 	});
-	
 });
