@@ -1,5 +1,6 @@
 # WebSocket Chat App
 
+![Chat App Preview](https://cdn.glitch.global/d003696d-9cab-4d96-baa5-bb1fa981a660/cipherconnect.png?v=1735931631075)
 A real-time chat application using **WebSockets**, **JWT authentication**, **SQLite** for message and credential storage, and **bcrypt** for encryption. Users can upload avatars to personalize their profiles.
 
 ## <a href="https://cipherconnect.onrender.com" target="_blank">https://cipherconnect.onrender.com</a>
