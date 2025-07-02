@@ -1,8 +1,7 @@
-## 1️⃣ WebSocket Chat App  
+## WebSocket Chat App  
 ![Status](https://img.shields.io/badge/status-complete-brightgreen)  
 ![Tech](https://img.shields.io/badge/-Node.js-339933) ![Tech](https://img.shields.io/badge/-WebSockets-010101) ![Tech](https://img.shields.io/badge/-JWT-000000) ![Tech](https://img.shields.io/badge/-SQLite-003B57) ![Tech](https://img.shields.io/badge/-Bcrypt-FF5722)  
 
-🖼️ **Preview**:  
 ![Chat App Preview](https://cdn.glitch.global/d003696d-9cab-4d96-baa5-bb1fa981a660/cipherconnect.png)  
 
 🌐 **Live Demo**: [https://cipherconnect.onrender.com](https://cipherconnect.onrender.com)  
