@@ -1,31 +1,28 @@
-# WebSocket Chat App
+## 1️⃣ WebSocket Chat App  
+![Status](https://img.shields.io/badge/status-complete-brightgreen)  
+![Tech](https://img.shields.io/badge/-Node.js-339933) ![Tech](https://img.shields.io/badge/-WebSockets-010101) ![Tech](https://img.shields.io/badge/-JWT-000000) ![Tech](https://img.shields.io/badge/-SQLite-003B57) ![Tech](https://img.shields.io/badge/-Bcrypt-FF5722)  
 
-![Chat App Preview](https://cdn.glitch.global/d003696d-9cab-4d96-baa5-bb1fa981a660/cipherconnect.png?v=1735931631075)
-A real-time chat application using **WebSockets**, **JWT authentication**, **SQLite** for message and credential storage, and **bcrypt** for encryption. Users can upload avatars to personalize their profiles.
+🖼️ **Preview**:  
+![Chat App Preview](https://cdn.glitch.global/d003696d-9cab-4d96-baa5-bb1fa981a660/cipherconnect.png)  
 
-## <a href="https://cipherconnect.onrender.com" target="_blank">https://cipherconnect.onrender.com</a>
+🌐 **Live Demo**: [https://cipherconnect.onrender.com](https://cipherconnect.onrender.com)  
 
-## Features
+### ✨ Features  
+- Real-time messaging with WebSockets  
+- JWT authentication  
+- SQLite database for messages/credentials  
+- Bcrypt hashing for passwords/messages  
+- Avatar uploads with validation  
 
-- **Real-time messaging** with WebSockets
-- **User authentication** using JWT
-- **SQLite database** for storing messages and user credentials
-- **Bcrypt hashing** for password and message encryption
-- **Avatar uploads** with file validation
+### 🛠️ Tech Stack  
+- **Backend**: ![Node.js](https://img.shields.io/badge/-Node.js-339933) ![Express](https://img.shields.io/badge/-Express-000000)  
+- **Database**: ![SQLite](https://img.shields.io/badge/-SQLite-003B57)  
+- **Security**: ![JWT](https://img.shields.io/badge/-JWT-000000) ![Bcrypt](https://img.shields.io/badge/-Bcrypt-FF5722)  
+- **Frontend**: ![HTML5](https://img.shields.io/badge/-HTML5-E34F26) ![CSS3](https://img.shields.io/badge/-CSS3-1572B6) ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E)  
 
-## Technologies Used
-
-- **Backend:** Node.js, Express, WebSockets
-- **Database:** SQLite
-- **Authentication:** JWT (JSON Web Tokens)
-- **Encryption:** Bcrypt
-- **Frontend:** HTML, CSS, JavaScript
-
-## Security
-
-- **Passwords** are hashed with **bcrypt** before storage.
-- **Messages** are also encrypted before saving.
-- **JWT authentication** protects user sessions.
-- **Avatar uploads** are validated for size and type.
-
-
+### 📝 Notes  
+🔒 **Security Focus**:  
+- Passwords hashed with bcrypt  
+- Messages encrypted before storage  
+- JWT-protected sessions  
+- Avatar file validation (type/size)  
